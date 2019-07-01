@@ -1,4 +1,4 @@
-#include "array.h"
+#include "array_ops.h"
 
 void clear_buffer(char* buffer, int size) {
 	// Loop through the entire array and set all values to the null terminator

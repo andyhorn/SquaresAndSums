@@ -2,16 +2,20 @@
 #include <string>
 #include <cctype>
 #include <ctime>
-#include "array.h"
+#include "array_ops.h"
 #include "ops.h"
+#include "Math.h"
 
 #define BUFFER_LENGTH 512
 
 bool get_nums(int &start, int &end);
 bool is_number(char* buffer);
+void print_array(integerArray arr);
 
 int main() {
 	int start = 0, end = 0, *found = nullptr, num_found = 0;
+	math m;
+	integerArray arr;
 
 	// Get the start and end values, then, if they are valid, proceed
 	if (!get_nums(start, end)) {
@@ -19,14 +23,32 @@ int main() {
 		return -1;
 	}
 	else {
+		m.set_start(start);
+		m.set_end(end);
 		std::cout << std::endl;
-		run_operation(SUM_OF_SQUARES, start, end);
+		arr = m.sum_of_squares();
+		//run_operation(SUM_OF_SQUARES, start, end);
+		print_array(arr);
 
-		std::cout << std::endl;
-		run_operation(SQUARE_OF_SUMS, start, end);
+		arr = m.square_of_sums();
+		print_array(arr);
+		//run_operation(SQUARE_OF_SUMS, start, end);
 	}
 
 	return 0;
+}
+
+void print_array(integerArray arr) {
+	if (arr.get_size()) {
+		std::cout << "Total Values: " << arr.get_size() << std::endl;
+		std::cout << "List of Values: [";
+		for (int i = 0; i < arr.get_size() - 1; i++) {
+			std::cout << arr[i] << ", ";
+		}
+		std::cout << arr[arr.get_size() - 1] << "]" << std::endl;
+	}
+
+	std::cout << std::endl;
 }
 
 bool get_nums(int &start, int &end) {

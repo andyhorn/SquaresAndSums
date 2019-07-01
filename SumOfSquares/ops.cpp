@@ -1,7 +1,7 @@
 #include "ops.h"
 #include <iostream>
 #include <ctime>
-#include "array.h"
+#include "array_ops.h"
 
 void run_operation(int operation, int start, int end) {
 	int *found = nullptr, num_found = 0;

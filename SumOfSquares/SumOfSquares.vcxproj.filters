@@ -18,18 +18,30 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="array.cpp">
+    <ClCompile Include="ops.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ops.cpp">
+    <ClCompile Include="array_ops.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntegerArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ops.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array_ops.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ops.h">
+    <ClInclude Include="Math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
