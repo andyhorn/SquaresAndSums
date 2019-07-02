@@ -1,5 +1,5 @@
 #pragma once
-#include "array.h"
+#include "IntegerArray.h"
 
 class Math {
 public:

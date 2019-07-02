@@ -144,7 +144,7 @@
     <ClCompile Include="Math.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="array.h" />
+    <ClInclude Include="IntegerArray.h" />
     <ClInclude Include="Math.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,4 +1,4 @@
-#include "array.h"
+#include "IntegerArray.h"
 
 IntegerArray::IntegerArray() {
 	m_size = 0;
