@@ -7,8 +7,8 @@ public:
 	math(int start, int end);
 	~math();
 
-	integerArray sum_of_squares();
-	integerArray square_of_sums();
+	integerArray* sum_of_squares();
+	integerArray* square_of_sums();
 
 	void set_start(int start);
 	int get_start();
@@ -17,14 +17,19 @@ public:
 	int get_end();
 
 private:
-	integerArray m_arr;
+	integerArray* m_arr;
 
 	int m_start;
 	int m_end;
 
-	integerArray to_squares();
-	void to_squares(integerArray &arr);
+	bool m_start_set;
+	bool m_end_set;
+
+	integerArray* to_squares();
+	void to_squares(integerArray* arr);
 
 	//int square_of(integerArray arr);
-	int sum_of(integerArray arr);
+	int sum_of(integerArray* const arr);
+
+	void set_values();
 };

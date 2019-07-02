@@ -5,14 +5,14 @@ public:
 	integerArray();
 	integerArray(int size);
 	~integerArray();
-	int & operator[](int index);
+	int& operator[](int index);
 	void operator=(integerArray right);
 	int get_size();
 	void set_size(int size);
-	void set(int *arr, int len);
+	void copy(int *arr, int len);
 	void add(int val);
 	int get(int index);
-	integerArray get_digits(int index);
+	integerArray* get_digits(int index);
 	void reverse();
 	int* array();
 	static void reverse(int* arr, int len);
