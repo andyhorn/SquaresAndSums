@@ -4,7 +4,7 @@
 #include "Buffer.h"
 
 bool get_nums(int &start, int &end);
-void print_array(IntegerArray arr);
+void print_array(IntegerArray* arr);
 
 int main() {
 	int start = 0, end = 0;
@@ -40,7 +40,7 @@ int main() {
 
 		// If the array has results, print them
 		if (arr->get_size()) {
-			print_array(*arr);
+			print_array(arr);
 		}
 		// Else, print the error message
 		else {
@@ -64,7 +64,7 @@ int main() {
 
 		// If the array has results, print them
 		if (arr->get_size()) {
-			print_array(*arr);
+			print_array(arr);
 		}
 		// Else, print the error message
 		else {
@@ -75,20 +75,22 @@ int main() {
 	return 0;
 }
 
-void print_array(IntegerArray arr) {
+void print_array(IntegerArray* arr) {
 	// Verify the array has values to print
-	if (arr.get_size()) {
+	int size = arr->get_size();
+
+	if (size) {
 		// Print the size of the array
-		std::cout << "Total Values: " << arr.get_size() << std::endl;
+		std::cout << "Total Values: " << size << std::endl;
 		std::cout << "List of Values: [";
 
 		// Print each value in the array, followed by a comma and a space
-		for (int i = 0; i < arr.get_size() - 1; i++) {
-			std::cout << arr[i] << ", ";
+		for (int i = 0; i < size - 1; i++) {
+			std::cout << (*arr)[i] << ", ";
 		}
 
 		// Print the last value followed by a closing bracket
-		std::cout << arr[arr.get_size() - 1] << "]" << std::endl;
+		std::cout << (*arr)[size - 1] << "]" << std::endl;
 	}
 }
 
