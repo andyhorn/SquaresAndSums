@@ -71,6 +71,7 @@ IntegerArray* Math::square_of_sums() {
 			found_numbers->add(i);
 		}
 
+		// Delete the current digit IntegerArray
 		delete digits;
 	}
 
@@ -160,13 +161,19 @@ int Math::sum_of(IntegerArray* const arr) {
 }
 
 void Math::set_values() {
+	// Verify the readiness
+	// The user must have set an end and a start value
+	// and the underlying array must be instantiated
 	if (m_start_set && m_end_set && m_arr != nullptr) {
 		int nums = m_end - m_start;
 
+		// Adjust the size of the array
 		m_arr->set_size(nums);
 
+		// Set the values within the given range to the array
 		for (int i = 0; i < nums; i++) {
-			(*m_arr)[i] = m_start + i;
+			int val = m_start + i;
+			m_arr[i] = val;
 		}
 	}
 }
