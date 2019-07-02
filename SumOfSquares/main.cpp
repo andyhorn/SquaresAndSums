@@ -1,33 +1,24 @@
 #include <iostream>
-#include <string>
-#include <cctype>
-#include <chrono>
 #include "Math.h"
 #include "Time.h"
 #include "Buffer.h"
 
-#define BUFFER_LENGTH 512
-
 bool get_nums(int &start, int &end);
-bool is_number(char* buffer);
 void print_array(IntegerArray arr);
-int get_size(char* buffer);
-void clear_buffer(char* buffer, int size);
 
 int main() {
-	int start = 0, end = 0; // , *found = nullptr, num_found = 0;
+	int start = 0, end = 0;
 	Math math;
 	Time timer;
 	IntegerArray* arr;
 	
-	// Get the start and end values, then, if they are valid, proceed
+	// Get the start and end values and check if they are valid
 	if (!get_nums(start, end)) {
 		std::cout << "Invalid input. Try again." << std::endl;
 		return -1;
 	}
 	else {
-		// If the values are valid numbers, 
-		// set the start and end values in the math object.
+		// Set the start and end values in the math object.
 		math.set_start(start);
 		math.set_end(end);
 		std::cout << std::endl;
@@ -57,7 +48,7 @@ int main() {
 		}
 
 		// Announce the square of sums procedure
-		std::cout << "Running Square of Sums..." << std::endl;
+		std::cout << "\nRunning Square of Sums..." << std::endl;
 
 		// Start the timer
 		timer.start();
@@ -102,92 +93,40 @@ void print_array(IntegerArray arr) {
 }
 
 bool get_nums(int &start, int &end) {
-	// Make a character array buffer
-	//char *buffer = new char[BUFFER_LENGTH];
+	// Get a buffer object
 	Buffer buf;
 
 	// Get the beginning value
 	std::cout << "Beginning of range: ";
-	//std::cin >> buffer;
 	buf.read_line();
 
 	// Verify the value is an integer
-	/*if (!is_number(buffer)) {
-		std::cout << "Invalid input, try again.";
-		return false;
-	}*/
-
 	if (!buf.is_number()) {
 		std::cout << "Invalid input, try again.";
 		return false;
 	}
 
 	// Convert the character string to an integer
-	//start = std::atoi(buffer);
 	start = buf.to_int();
 
 	// Clear the buffer
-	//clear_buffer(buffer, BUFFER_LENGTH);
 	buf.clear();
 
 	// Get the end value
 	std::cout << "End of range: ";
-	//std::cin >> buffer;
 	buf.read_line();
 
 	// Verify the value is an integer
-	//if (!is_number(buffer)) {
 	if (!buf.is_number()) {
 		std::cout << "Invalid input, try again.";
 		return false;
 	}
 
 	// Convert the character string to an integer
-	//end = std::atoi(buffer);
 	end = buf.to_int();
-
-	// Deallocate the buffer space
-	//delete[] buffer;
 
 	// Announce the values retrieved
 	std::cout << "\nBeginning value: " << start << "\tEnding value: " << end << std::endl;
 
 	return true;
-}
-
-bool is_number(char* buffer) {
-	bool isNum = true;
-
-	// Get the size of the buffer
-	int size = get_size(buffer);
-
-	// Loop through the values
-	for (int i = 0; i < size; i++) {
-
-		// If the current value is not a valid digit,
-		// set the flag and stop the loop
-		if (!std::isdigit(buffer[i])) {
-			isNum = false;
-			break;
-		}
-	}
-
-	return isNum;
-}
-
-int get_size(char* buffer) {
-	int size = 0;
-
-	// Move through the buffer until a null-terminator is found,
-	// count the number of steps through the array.
-	while (buffer[size] != '\0') { size++; }
-
-	return size;
-}
-
-void clear_buffer(char* buffer, int size) {
-	// Set each index in the array equal to the null terminator
-	for (int i = 0; i < size; i++) {
-		buffer[i] = '\0';
-	}
 }
