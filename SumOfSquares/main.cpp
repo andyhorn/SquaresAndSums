@@ -8,14 +8,14 @@
 
 bool get_nums(int &start, int &end);
 bool is_number(char* buffer);
-void print_array(integerArray arr);
+void print_array(IntegerArray arr);
 int get_size(char* buffer);
 void clear_buffer(char* buffer, int size);
 
 int main() {
 	int start = 0, end = 0, *found = nullptr, num_found = 0;
 	Math math;
-	integerArray* arr;
+	IntegerArray* arr;
 
 	// Get the start and end values, then, if they are valid, proceed
 	if (!get_nums(start, end)) {
@@ -39,7 +39,7 @@ int main() {
 	return 0;
 }
 
-void print_array(integerArray arr) {
+void print_array(IntegerArray arr) {
 	if (arr.get_size()) {
 		std::cout << "Total Values: " << arr.get_size() << std::endl;
 		std::cout << "List of Values: [";

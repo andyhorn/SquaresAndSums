@@ -1,12 +1,12 @@
 #include "array.h"
 
-integerArray::integerArray() {
+IntegerArray::IntegerArray() {
 	m_size = 0;
 	m_index = 0;
 	m_arr = nullptr;
 }
 
-integerArray::integerArray(int size) {
+IntegerArray::IntegerArray(int size) {
 	m_size = size;
 	m_index = 0;
 	m_arr = new int[size];
@@ -16,13 +16,13 @@ integerArray::integerArray(int size) {
 	}
 }
 
-integerArray::~integerArray() {
+IntegerArray::~IntegerArray() {
 	if (m_arr != nullptr && m_size > 0) {
 		delete[] m_arr;
 	}
 }
 
-int& integerArray::operator[](int index) {
+int& IntegerArray::operator[](int index) {
 	if (index < m_size) {
 		return m_arr[index];
 	}
@@ -31,7 +31,7 @@ int& integerArray::operator[](int index) {
 	}
 }
 
-void integerArray::operator=(integerArray right) {
+void IntegerArray::operator=(IntegerArray right) {
 	int size = right.get_size();
 
 	delete[] m_arr;
@@ -43,7 +43,7 @@ void integerArray::operator=(integerArray right) {
 	}
 }
 
-void integerArray::copy(int *arr, int len) {
+void IntegerArray::copy(int *arr, int len) {
 	delete[] m_arr;
 	m_arr = new int[len];
 
@@ -53,11 +53,11 @@ void integerArray::copy(int *arr, int len) {
 	}
 }
 
-int integerArray::get_size() {
+int IntegerArray::get_size() {
 	return m_size;
 }
 
-void integerArray::set_size(int size) {
+void IntegerArray::set_size(int size) {
 	if (m_arr == nullptr) {
 		m_arr = new int[size];
 		m_size = size;
@@ -78,12 +78,12 @@ void integerArray::set_size(int size) {
 	}
 }
 
-void integerArray::add(int val) {
+void IntegerArray::add(int val) {
 	set_size(m_size + 1);
 	m_arr[m_size - 1] = val;
 }
 
-int integerArray::get(int index) {
+int IntegerArray::get(int index) {
 	if (index < m_size) {
 		return m_arr[index];
 	}
@@ -93,9 +93,9 @@ int integerArray::get(int index) {
 }
 
 
-integerArray* integerArray::get_digits(int index) {
+IntegerArray* IntegerArray::get_digits(int index) {
 	int size = 0;
-	integerArray* arr = new integerArray();
+	IntegerArray* arr = new IntegerArray();
 
 	if (index >= m_size) {
 		throw "Error: Argument out of range";
@@ -143,15 +143,15 @@ integerArray* integerArray::get_digits(int index) {
 	}
 }
 
-int* integerArray::array() {
+int* IntegerArray::array() {
 	return m_arr;
 }
 
-void integerArray::reverse() {
+void IntegerArray::reverse() {
 	reverse(m_arr, m_size);
 }
 
-void integerArray::reverse(int* arr, int len) {
+void IntegerArray::reverse(int* arr, int len) {
 	int *rev_arr = new int[len];
 
 	for (int i = 0; i < len; i++) {
@@ -163,7 +163,7 @@ void integerArray::reverse(int* arr, int len) {
 	arr = rev_arr;
 }
 
-void integerArray::copy_array(int *src, int src_len, int *dest, int dest_len) {
+void IntegerArray::copy_array(int *src, int src_len, int *dest, int dest_len) {
 	for (int i = 0; i < src_len && i < dest_len; i++) {
 		int val = src[i];
 		dest[i] = val;

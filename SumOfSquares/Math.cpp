@@ -3,7 +3,7 @@
 Math::Math() {
 	m_start_set = false;
 	m_end_set = false;
-	m_arr = new integerArray();
+	m_arr = new IntegerArray();
 }
 
 Math::Math(int start, int end) {
@@ -15,7 +15,7 @@ Math::Math(int start, int end) {
 	int low = start < end ? start : end;
 	int high = start < end ? end : start;
 
-	m_arr = new integerArray();
+	m_arr = new IntegerArray();
 	m_arr->set_size(high - low);
 
 	set_values();
@@ -45,13 +45,13 @@ int Math::get_end() {
 	return m_end;
 }
 
-integerArray* Math::square_of_sums() {
+IntegerArray* Math::square_of_sums() {
 
 	if (!m_start_set || !m_end_set) {
 		throw "Error: Start and End values required";
 	}
 
-	integerArray *digits, *found_numbers = new integerArray();
+	IntegerArray *digits, *found_numbers = new IntegerArray();
 	int found_size = 0, length = 0, sum = 0;
 
 	// For each value in the array
@@ -77,12 +77,12 @@ integerArray* Math::square_of_sums() {
 	return found_numbers;
 }
 
-integerArray* Math::sum_of_squares() {
+IntegerArray* Math::sum_of_squares() {
 	if (!m_start_set || !m_end_set) {
 		throw "Error: Start and End values required";
 	}
 
-	integerArray *digits, *found_numbers = new integerArray();
+	IntegerArray *digits, *found_numbers = new IntegerArray();
 	int found_size = 0, length = 0, sum = 0;
 
 	// For each value in the arry
@@ -108,13 +108,13 @@ integerArray* Math::sum_of_squares() {
 	return found_numbers;
 }
 
-integerArray* Math::to_squares() {
+IntegerArray* Math::to_squares() {
 	if (!m_start_set || !m_end_set) {
 		throw "Error: Start and End values required";
 	}
-	// Get a new integerArray object
-	integerArray* squared = new integerArray(m_arr->get_size());
-	//integerArray square_arr(m_arr.get_size());
+	// Get a new IntegerArray object
+	IntegerArray* squared = new IntegerArray(m_arr->get_size());
+	//IntegerArray square_arr(m_arr.get_size());
 
 	// For each value in this array
 	for (int i = 0; i < m_arr->get_size(); i++) {
@@ -129,7 +129,7 @@ integerArray* Math::to_squares() {
 	return squared;
 }
 
-void Math::to_squares(integerArray* arr) {
+void Math::to_squares(IntegerArray* arr) {
 	// Get the size of the incoming array
 	int size = arr->get_size(), val = 0;
 
@@ -146,7 +146,7 @@ void Math::to_squares(integerArray* arr) {
 	}
 }
 
-int Math::sum_of(integerArray* const arr) {
+int Math::sum_of(IntegerArray* const arr) {
 	// Get the size of the incoming array
 	int size = arr->get_size(), sum = 0;
 

@@ -1,18 +1,18 @@
 #pragma once
 
-class integerArray {
+class IntegerArray {
 public:
-	integerArray();
-	integerArray(int size);
-	~integerArray();
+	IntegerArray();
+	IntegerArray(int size);
+	~IntegerArray();
 	int& operator[](int index);
-	void operator=(integerArray right);
+	void operator=(IntegerArray right);
 	int get_size();
 	void set_size(int size);
 	void copy(int *arr, int len);
 	void add(int val);
 	int get(int index);
-	integerArray* get_digits(int index);
+	IntegerArray* get_digits(int index);
 	void reverse();
 	int* array();
 	static void reverse(int* arr, int len);
