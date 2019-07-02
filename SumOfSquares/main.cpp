@@ -4,6 +4,7 @@
 #include <chrono>
 #include "Math.h"
 #include "Time.h"
+#include "Buffer.h"
 
 #define BUFFER_LENGTH 512
 
@@ -102,39 +103,51 @@ void print_array(IntegerArray arr) {
 
 bool get_nums(int &start, int &end) {
 	// Make a character array buffer
-	char *buffer = new char[BUFFER_LENGTH];
+	//char *buffer = new char[BUFFER_LENGTH];
+	Buffer buf;
 
 	// Get the beginning value
 	std::cout << "Beginning of range: ";
-	std::cin >> buffer;
+	//std::cin >> buffer;
+	buf.read_line();
 
 	// Verify the value is an integer
-	if (!is_number(buffer)) {
+	/*if (!is_number(buffer)) {
+		std::cout << "Invalid input, try again.";
+		return false;
+	}*/
+
+	if (!buf.is_number()) {
 		std::cout << "Invalid input, try again.";
 		return false;
 	}
 
 	// Convert the character string to an integer
-	start = std::atoi(buffer);
+	//start = std::atoi(buffer);
+	start = buf.to_int();
 
 	// Clear the buffer
-	clear_buffer(buffer, BUFFER_LENGTH);
+	//clear_buffer(buffer, BUFFER_LENGTH);
+	buf.clear();
 
 	// Get the end value
 	std::cout << "End of range: ";
-	std::cin >> buffer;
+	//std::cin >> buffer;
+	buf.read_line();
 
 	// Verify the value is an integer
-	if (!is_number(buffer)) {
+	//if (!is_number(buffer)) {
+	if (!buf.is_number()) {
 		std::cout << "Invalid input, try again.";
 		return false;
 	}
 
 	// Convert the character string to an integer
-	end = std::atoi(buffer);
+	//end = std::atoi(buffer);
+	end = buf.to_int();
 
 	// Deallocate the buffer space
-	delete[] buffer;
+	//delete[] buffer;
 
 	// Announce the values retrieved
 	std::cout << "\nBeginning value: " << start << "\tEnding value: " << end << std::endl;
