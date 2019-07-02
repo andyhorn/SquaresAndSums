@@ -1,12 +1,12 @@
 #include "Math.h"
 
-math::math() {
+Math::Math() {
 	m_start_set = false;
 	m_end_set = false;
 	m_arr = new integerArray();
 }
 
-math::math(int start, int end) {
+Math::Math(int start, int end) {
 	m_start = start;
 	m_end = end;
 	m_start_set = true;
@@ -21,31 +21,31 @@ math::math(int start, int end) {
 	set_values();
 }
 
-math::~math() {
+Math::~Math() {
 	delete m_arr;
 }
 
-void math::set_start(int start) {
+void Math::set_start(int start) {
 	m_start = start;
 	m_start_set = true;
 	set_values();
 }
 
-void math::set_end(int end) {
+void Math::set_end(int end) {
 	m_end = end;
 	m_end_set = true;
 	set_values();
 }
 
-int math::get_start() {
+int Math::get_start() {
 	return m_start;
 }
 
-int math::get_end() {
+int Math::get_end() {
 	return m_end;
 }
 
-integerArray* math::square_of_sums() {
+integerArray* Math::square_of_sums() {
 
 	if (!m_start_set || !m_end_set) {
 		throw "Error: Start and End values required";
@@ -77,7 +77,7 @@ integerArray* math::square_of_sums() {
 	return found_numbers;
 }
 
-integerArray* math::sum_of_squares() {
+integerArray* Math::sum_of_squares() {
 	if (!m_start_set || !m_end_set) {
 		throw "Error: Start and End values required";
 	}
@@ -108,7 +108,7 @@ integerArray* math::sum_of_squares() {
 	return found_numbers;
 }
 
-integerArray* math::to_squares() {
+integerArray* Math::to_squares() {
 	if (!m_start_set || !m_end_set) {
 		throw "Error: Start and End values required";
 	}
@@ -129,7 +129,7 @@ integerArray* math::to_squares() {
 	return squared;
 }
 
-void math::to_squares(integerArray* arr) {
+void Math::to_squares(integerArray* arr) {
 	// Get the size of the incoming array
 	int size = arr->get_size(), val = 0;
 
@@ -146,7 +146,7 @@ void math::to_squares(integerArray* arr) {
 	}
 }
 
-int math::sum_of(integerArray* const arr) {
+int Math::sum_of(integerArray* const arr) {
 	// Get the size of the incoming array
 	int size = arr->get_size(), sum = 0;
 
@@ -159,7 +159,7 @@ int math::sum_of(integerArray* const arr) {
 	return sum;
 }
 
-void math::set_values() {
+void Math::set_values() {
 	if (m_start_set && m_end_set && m_arr != nullptr) {
 		int nums = m_end - m_start;
 

@@ -1,11 +1,11 @@
 #pragma once
 #include "array.h"
 
-class math {
+class Math {
 public:
-	math();
-	math(int start, int end);
-	~math();
+	Math();
+	Math(int start, int end);
+	~Math();
 
 	integerArray* sum_of_squares();
 	integerArray* square_of_sums();

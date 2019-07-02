@@ -14,7 +14,7 @@ void print_array(integerArray arr);
 
 int main() {
 	int start = 0, end = 0, *found = nullptr, num_found = 0;
-	math m;
+	Math math;
 	integerArray* arr;
 
 	// Get the start and end values, then, if they are valid, proceed
@@ -23,16 +23,16 @@ int main() {
 		return -1;
 	}
 	else {
-		m.set_start(start);
-		m.set_end(end);
+		math.set_start(start);
+		math.set_end(end);
 		std::cout << std::endl;
 
 		std::cout << "Sum of Squares:" << std::endl;
-		arr = m.sum_of_squares();
+		arr = math.sum_of_squares();
 		print_array(*arr);
 
 		std::cout << "Square of Sums:" << std::endl;
-		arr = m.square_of_sums();
+		arr = math.square_of_sums();
 		print_array(*arr);
 	}
 
