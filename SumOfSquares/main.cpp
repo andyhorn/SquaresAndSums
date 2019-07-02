@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 #include <cctype>
-#include <ctime>
 #include <chrono>
 #include "Math.h"
+#include "Time.h"
 
 #define BUFFER_LENGTH 512
 
@@ -12,16 +12,13 @@ bool is_number(char* buffer);
 void print_array(IntegerArray arr);
 int get_size(char* buffer);
 void clear_buffer(char* buffer, int size);
-int64_t get_time();
 
 int main() {
-	int start = 0, end = 0, *found = nullptr, num_found = 0;
+	int start = 0, end = 0; // , *found = nullptr, num_found = 0;
 	Math math;
+	Time timer;
 	IntegerArray* arr;
-	time_t start_time, end_time;
-	int64_t start_t, end_t;
 	
-
 	// Get the start and end values, then, if they are valid, proceed
 	if (!get_nums(start, end)) {
 		std::cout << "Invalid input. Try again." << std::endl;
@@ -37,19 +34,17 @@ int main() {
 		// Announce the start of the sum of squares procedure
 		std::cout << "Running Sum of Squares..." << std::endl;
 
-		// Get the start time
-		std::time(&start_time);
-		start_t = get_time();
+		// Start the timer
+		timer.start();
 
 		// Get the sum of squares results
 		arr = math.sum_of_squares();
 
-		// Get the end time
-		std::time(&end_time);
-		end_t = get_time();
+		// End the timer
+		timer.end();
 
 		// Print the elapsed time
-		std::cout << "Total time: " << end_t - start_t << " ms." << std::endl;
+		std::cout << "Elapsed time: " << timer.get_elapsed() << " ms." << std::endl;
 
 		// If the array has results, print them
 		if (arr->get_size()) {
@@ -63,19 +58,17 @@ int main() {
 		// Announce the square of sums procedure
 		std::cout << "Running Square of Sums..." << std::endl;
 
-		// Get the start time
-		std::time(&start_time);
-		start_t = get_time();
+		// Start the timer
+		timer.start();
 
 		// Get the square of sums results
 		arr = math.square_of_sums();
 
-		// Get the end time
-		std::time(&end_time);
-		end_t = get_time();
+		// End the timer
+		timer.end();
 
 		// Print the elapsed time
-		std::cout << "Total time: " << end_t - start_t << " ms." << std::endl;
+		std::cout << "Elapsed time: " << timer.get_elapsed() << " ms." << std::endl;
 
 		// If the array has results, print them
 		if (arr->get_size()) {
@@ -88,10 +81,6 @@ int main() {
 	}
 
 	return 0;
-}
-
-int64_t get_time() {
-	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
 }
 
 void print_array(IntegerArray arr) {
