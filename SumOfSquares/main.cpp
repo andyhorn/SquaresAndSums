@@ -2,8 +2,6 @@
 #include <string>
 #include <cctype>
 #include <ctime>
-#include "array_ops.h"
-#include "ops.h"
 #include "Math.h"
 
 #define BUFFER_LENGTH 512
@@ -11,6 +9,8 @@
 bool get_nums(int &start, int &end);
 bool is_number(char* buffer);
 void print_array(integerArray arr);
+int get_size(char* buffer);
+void clear_buffer(char* buffer, int size);
 
 int main() {
 	int start = 0, end = 0, *found = nullptr, num_found = 0;
@@ -101,4 +101,18 @@ bool is_number(char* buffer) {
 	}
 
 	return isNum;
+}
+
+int get_size(char* buffer) {
+	int size = 0;
+
+	while (buffer[size] != '\0') { size++; }
+
+	return size;
+}
+
+void clear_buffer(char* buffer, int size) {
+	for (int i = 0; i < size; i++) {
+		buffer[i] = '\0';
+	}
 }

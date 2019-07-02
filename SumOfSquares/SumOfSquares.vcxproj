@@ -139,17 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="array_ops.cpp" />
     <ClCompile Include="IntegerArray.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
-    <ClCompile Include="ops.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array.h" />
-    <ClInclude Include="array_ops.h" />
     <ClInclude Include="Math.h" />
-    <ClInclude Include="ops.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
