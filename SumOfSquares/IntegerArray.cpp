@@ -19,9 +19,7 @@ IntegerArray::IntegerArray(int size) {
 
 IntegerArray::~IntegerArray() {
 	// If the underlying array exists, delete it
-	if (m_arr != nullptr && m_size > 0) {
-		delete[] m_arr;
-	}
+	deallocate();
 }
 
 int& IntegerArray::operator[](int index) {
@@ -38,7 +36,7 @@ void IntegerArray::operator=(IntegerArray right) {
 	int size = right.get_size();
 
 	// Delete the current array
-	delete[] m_arr;
+	deallocate();
 
 	// Instantiate a new array of the requested size
 	m_arr = new int[size];
@@ -52,7 +50,7 @@ void IntegerArray::operator=(IntegerArray right) {
 
 void IntegerArray::copy(int *arr, int len) {
 	// Delete the current array
-	delete[] m_arr;
+	deallocate();
 
 	// Instantiate a new array of the same size as the array to be copied
 	m_arr = new int[len];
@@ -83,12 +81,7 @@ void IntegerArray::set_size(int size) {
 		copy_array(m_arr, m_size, new_arr, size);
 
 		// Delete the current array
-		if (m_size == 1) {
-			delete m_arr;
-		}
-		else {
-			delete[] m_arr;
-		}
+		deallocate();
 
 		// Set the new array as the member array
 		m_arr = new_arr;
@@ -177,7 +170,12 @@ void IntegerArray::reverse(int* arr, int len) {
 	}
 
 	// Delete the old array
-	delete[] arr;
+	if (len > 1) {
+		delete[] arr;
+	}
+	else {
+		delete arr;
+	}
 
 	// Point the array pointer to the new array
 	arr = rev_arr;
@@ -188,5 +186,18 @@ void IntegerArray::copy_array(int *src, int src_len, int *dest, int dest_len) {
 	for (int i = 0; i < src_len && i < dest_len; i++) {
 		int val = src[i];
 		dest[i] = val;
+	}
+}
+
+void IntegerArray::deallocate() {
+	// Verify an array currently exists
+	if (m_arr != nullptr) {
+		// Use the proper deallocation syntax
+		if (m_size > 1) {
+			delete[] m_arr;
+		}
+		else {
+			delete m_arr;
+		}
 	}
 }

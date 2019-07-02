@@ -21,4 +21,6 @@ private:
 	int m_size;
 	int m_index;
 	int* m_arr;
+
+	void deallocate();
 };
